@@ -1,0 +1,47 @@
+import React, { useEffect, useState } from "react";
+import "./AddUser.css";
+
+const AddUsers = () => {
+  const [buttontext, setButtonText] = useState("Click me please Rect hooks");
+  const [user, setUser] = useState({
+    id: 1,
+    name: "dinesh",
+    salary: 100000,
+  });
+
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetch("")
+      .then((response) => response.join)
+      .then((data) => setData(data));
+  });
+
+  useEffect(() => {
+    fetch("http://127.0.0.1:8080/jpa/link/")
+      .then(response => {response.json();
+    console.log("res"+response.json())})
+      .then(data => setData(data));
+  },[]);
+
+  return (
+    <div className="add-user-div">
+      <form >
+        <label>User Id : </label> <input type="text" value={user.id} /> <br />
+        <label>Name : </label> <input type="text" value={user.name} /> <br />
+        <label>Salary : </label> <input type="text" value={user.salary} />
+        <br />
+        <button type="submit" value="submit">
+          Submit
+        </button>
+      </form>
+      <hr />
+      <ul>
+          {data.map(el=>( <li key={el.id}>{el.title}</li>))}
+      </ul>
+      <button onClick={() => setButtonText("Thanks")}>{buttontext}</button>
+    </div>
+  );
+};
+
+export default AddUsers;
