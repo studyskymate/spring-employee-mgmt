@@ -2,11 +2,17 @@ package com.example.emp;
 
 import java.util.List;
 
+import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import com.example.emp.model.Employee;
 import com.example.emp.model.repository.EmployeeRepository;
@@ -33,5 +39,24 @@ public class EmployeeController {
 		return "employee";
 	}
 	
+	@PostMapping("/employee")
+	public Employee saveEmplyee(HttpServletRequest request,Model model) {
+		
+		//@ModelAttribute("employee") Employee employee
+		
+		long id=   Long.valueOf(request.getParameter("id"));
+		String name=request.getParameter("id");
+		String salary=request.getParameter("id");
+		
+		Employee employee =new Employee();
+		employee.setId(id);
+		employee.setName(name);
+		employee.setSalary( Double.valueOf(salary));
+		
+		Employee emp=employeeRepository.save(employee);
+		if(emp!=null)
+		System.out.println("Employee Saved"+emp);
+		return employee;
+	}
 	
 }

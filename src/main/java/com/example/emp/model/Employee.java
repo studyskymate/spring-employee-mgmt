@@ -38,4 +38,9 @@ public class Employee {
 		this.salary = salary;
 	}
 
+	@Override
+	public String toString() {
+		return "Employee [id=" + id + ", name=" + name + ", salary=" + salary + "]";
+	}
+
 }
