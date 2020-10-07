@@ -13,7 +13,7 @@ import com.example.emp.model.Product;
 
 
 @Controller
-public class GreetingController {
+public class ProductController {
 
 	@GetMapping("/product")
 	public String greeting(@RequestParam(name = "name", required = false, defaultValue = "World") String name,
@@ -61,7 +61,7 @@ public class GreetingController {
 		Product product3 = new Product(3, "HP laptop", "$500");
 		Product product4 = new Product(4, "laptop", "$100a0");
 		Product product5 = new Product(5, "Lenop laptop", "$700");
-		Product product6 = new Product(6, "HP laptop", "$500");
+	
 		
 
 		// Add Image:
@@ -72,14 +72,14 @@ public class GreetingController {
 		product4.setImageUrl("https://i.ibb.co/xzLsJRb/laptop.jpg");
 
 		product5.setImageUrl("https://i.ibb.co/wW79bFP/laptop2.jpg");
-		product6.setImageUrl("https://i.ibb.co/xzLsJRb/laptop.jpg");
+		
 		
 		productlist.add(product1);
 		productlist.add(product2);
 		productlist.add(product3);
 		productlist.add(product4);
 		productlist.add(product5);
-		productlist.add(product6);
+	
 
 		model.addAttribute("products", productlist);
 		return "product";
