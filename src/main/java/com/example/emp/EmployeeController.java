@@ -26,8 +26,15 @@ public class EmployeeController {
 	@Autowired
 	EmployeeRepository employeeRepository;
 
+	
+	@GetMapping("/")
+		public String getIndex(Model model) {
+		return "index";
+		}
+	 
+	
 	//Need Model Object here to passs data to frontend
-	@GetMapping("/v2/employee/fetch") 
+	@GetMapping("/employee") 
 	public String getEmplyee(Model model) {
 		//fetch list of employees
 		List<Employee> listEmployees =employeeRepository.findAll();
@@ -39,9 +46,9 @@ public class EmployeeController {
 		return "employee";
 	}
 	
-	@PostMapping("/employee")
+	@PostMapping("/employee1")
 	public Employee saveEmplyee(HttpServletRequest request,Model model) {
-		
+		System.out.println("IN Employee");
 		//@ModelAttribute("employee") Employee employee
 		
 		long id=   Long.valueOf(request.getParameter("id"));

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+ <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 200px;
+  margin: 5px;
+  text-align: center;
+  font-family: arial;
+   display: inline-block;
+}
+
+.price {
+  color: grey;
+  font-size: 22px;
+}
+
+.card button {
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+.card button:hover {
+  opacity: 0.7;
+}
+</style>
+</head>
+
+
+<body>
+
+<div th:replace="/fragments/menu.html :: menu"> </div>
+
+
+
+
+
+
+
+
+<div th:replace="/fragments/homeslider :: slider"> </div>
+
+
+<div class="container-fluid">
+<h2 style="text-align:center">Products</h2>
+<div class="card" th:each="product: ${products}">
+  <img th:src="@{${product.imageUrl}}" alt="Denim Jeans" style="width:100%"/>
+  <h1><span th:text="*{product.name}"></span> </h1>
+  <p class="price" > <span th:text="*{product.price}"></span> </p>
+   <span th:text="*{product.name}">...</span> 
+  <p><button>Add to Cart</button></p>
+</div>
+</div>
+
+
+<div th:replace="/fragments/homeslider :: slider"> </div>
+
+
+
+<div class="container-fluid">
+  <div id="myCarousel1" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarouse1l" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel1" data-slide-to="1"></li>
+      <li data-target="#myCarousel1" data-slide-to="2"></li>
+    </ol>
+<hr/>
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+	<div class="item active">
+	      
+	      <div class="card" th:each="product: ${products}">
+		  <img th:src="@{${product.imageUrl}}" alt="Denim Jeans" style="width:100%"/>
+		  <h1><span th:text="*{product.name}"></span> </h1>
+		  <p class="price" > <span th:text="*{product.price}"></span> </p>
+		   <span th:text="*{product.name}">...</span> 
+		  <p><button>Add to Cart</button></p>
+		  </div>
+
+      </div>
+      
+
+
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel1" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel1" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
+
+<div th:replace="/fragments/homeslider :: slider"> </div>
+
+ <p th:text="'Hello,Welcome  ' + ${name} + '!'" />
+ <li th:each="product: ${products}" >
+  <span th:text="*{product.id}"></span> 
+  <span th:text="*{product.name}">...</span> 
+  <span th:text="*{product.price}">...</span> 
+  <span th:text="*{product.imageUrl}">...</span> 
+ </li>
+</div>
+
+
+
+<div th:replace="/fragments/footer.html :: footer"> </div>
+
+</body>
+
+
+
+</html>

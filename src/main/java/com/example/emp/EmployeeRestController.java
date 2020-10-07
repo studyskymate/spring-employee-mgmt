@@ -29,6 +29,7 @@ public class EmployeeRestController {
 
 	@PostMapping("/employee/save")
 	public Employee saveEmplyee(@RequestBody Employee employee) {
+		
 		Employee emp=employeeRepository.save(employee);
 		return emp;
 	}
