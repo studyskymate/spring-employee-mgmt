@@ -3,10 +3,13 @@ package com.example.emp;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.emp.model.Product;
@@ -51,10 +54,17 @@ public class ProductController {
 	}
 	
 	@PostMapping("/product")
-	public String greetingPost(@RequestParam(name = "name", required = false, defaultValue = "World") String name,
+	public String greetingPost(@RequestBody String request,
+			@RequestParam(name = "name", required = false, defaultValue = "World") String name,
+			HttpServletRequest httpRequest,
 			Model model) {
 		model.addAttribute("name", name);
-
+        
+		String pass=httpRequest.getParameter("password");
+		
+		System.out.println("request"+httpRequest+"name:="+name+" pass"
+				+pass);
+		
 		List<Product> productlist = new ArrayList<>();
 		Product product1 = new Product(1, "Dell laptop", "$1000");
 		Product product2 = new Product(2, "Lenevo laptop", "$750");
