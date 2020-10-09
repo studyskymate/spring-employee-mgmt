@@ -54,12 +54,15 @@ public class ProductController {
 	}
 	
 	@PostMapping("/product")
-	public String greetingPost(@RequestBody String request,
+	public String greetingPost(
+			@RequestBody String request,
 			@RequestParam(name = "name", required = false, defaultValue = "World") String name,
 			HttpServletRequest httpRequest,
 			Model model) {
+		
 		model.addAttribute("name", name);
         
+		String name2 =httpRequest.getParameter("name");
 		String pass=httpRequest.getParameter("password");
 		
 		System.out.println("request"+httpRequest+"name:="+name+" pass"

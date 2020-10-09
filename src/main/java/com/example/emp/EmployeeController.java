@@ -46,14 +46,14 @@ public class EmployeeController {
 		return "employee";
 	}
 	
-	@PostMapping("/employee1")
-	public Employee saveEmplyee(HttpServletRequest request,Model model) {
+	@PostMapping("/employeesave")
+	public String saveEmplyee(HttpServletRequest request,Model model) {
 		System.out.println("IN Employee");
 		//@ModelAttribute("employee") Employee employee
 		
 		long id=   Long.valueOf(request.getParameter("id"));
-		String name=request.getParameter("id");
-		String salary=request.getParameter("id");
+		String name=request.getParameter("name");
+		String salary=request.getParameter("salary");
 		
 		Employee employee =new Employee();
 		employee.setId(id);
@@ -63,7 +63,19 @@ public class EmployeeController {
 		Employee emp=employeeRepository.save(employee);
 		if(emp!=null)
 		System.out.println("Employee Saved"+emp);
-		return employee;
+		
+		//fetch list of employees
+		List<Employee> listEmployees =employeeRepository.findAll();
+		
+		//Set the Model Object
+		model.addAttribute("employees",listEmployees);
+		
+		//Here Return the name of HTML file or view file
+		return "employee";
+		
+	
 	}
+	
+
 	
 }

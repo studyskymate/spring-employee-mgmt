@@ -12,10 +12,19 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-	
 
-	<div th:replace="/fragments/menu.html :: menu"> </div>
+
+	<div th:replace="/fragments/menu.html :: menu"></div>
+
+
 	<div class="container">
+
+
+		<div
+			th:replace="/fragments/create_employee.html :: create_employee_fragment">
+		</div>
+
+
 		<table class="table table-bordered">
 			<thead>
 				<tr>
