@@ -19,7 +19,10 @@
 
 	<div class="container">
 
-
+       
+       
+       <p th:text="${error}" class="btn btn-alert"></p>
+       
 		<div
 			th:replace="/fragments/create_employee.html :: create_employee_fragment">
 		</div>
@@ -31,6 +34,7 @@
 					<th>Id</th>
 					<th>Name</th>
 					<th>Salary</th>
+					<th> delete</th>
 				</tr>
 			</thead>
 
@@ -38,6 +42,12 @@
 				<td th:text="${emp.id}"></td>
 				<td th:text="${emp.name}"></td>
 				<td th:text="${emp.salary}"></td>
+				      <td>
+                                  <a th:href="@{/delete/{id}(id=${emp.id})}"
+                                             class="btn btn-primary">
+                                      Delete
+                                   </a>
+                                </td>
 			</tr>
 		</table>
 	</div>
