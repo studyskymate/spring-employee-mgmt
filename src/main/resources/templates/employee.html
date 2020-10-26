@@ -13,7 +13,6 @@
 </head>
 <body>
 
-
 	<div th:replace="/fragments/menu.html :: menu"></div>
 
 
@@ -34,20 +33,30 @@
 					<th>Id</th>
 					<th>Name</th>
 					<th>Salary</th>
-					<th> delete</th>
+					<th>Edit</th>
+					<th>Delete</th>
 				</tr>
 			</thead>
 
 			<tr th:each="emp :${employees}">
 				<td th:text="${emp.id}"></td>
+				
+	
 				<td th:text="${emp.name}"></td>
+				
 				<td th:text="${emp.salary}"></td>
 				      <td>
-                                  <a th:href="@{/delete/{id}(id=${emp.id})}"
-                                             class="btn btn-primary">
-                                      Delete
-                                   </a>
-                                </td>
+                      <a th:href="@{/delete/{id}(id=${emp.id})}"
+                         class="btn btn-primary">
+                          Edit
+                        </a>
+                      </td>
+				      <td>
+                      <a th:href="@{/delete/{id}(id=${emp.id})}"
+                         class="btn btn-primary">
+                          Delete
+                         </a>
+                      </td>
 			</tr>
 		</table>
 	</div>

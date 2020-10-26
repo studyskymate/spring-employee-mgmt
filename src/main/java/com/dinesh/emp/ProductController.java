@@ -1,4 +1,4 @@
-package com.example.emp;
+package com.dinesh.emp;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.example.emp.model.Product;
+import com.dinesh.emp.model.Product;
 
 
 @Controller

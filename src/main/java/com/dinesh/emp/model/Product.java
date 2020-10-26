@@ -1,4 +1,4 @@
-package com.example.emp.model;
+package com.dinesh.emp.model;
 
 
 public class Product {

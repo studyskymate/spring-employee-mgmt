@@ -1,4 +1,4 @@
-package com.example.emp;
+package com.dinesh.emp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

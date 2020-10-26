@@ -1,4 +1,4 @@
-package com.example.emp;
+package com.dinesh.emp;
 
 import java.util.List;
 
@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.emp.model.Employee;
-import com.example.emp.model.repository.EmployeeRepository;
+import com.dinesh.emp.model.Employee;
+import com.dinesh.emp.model.repository.EmployeeRepository;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController

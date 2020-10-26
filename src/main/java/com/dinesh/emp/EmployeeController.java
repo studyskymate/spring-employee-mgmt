@@ -1,4 +1,4 @@
-package com.example.emp;
+package com.dinesh.emp;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.emp.model.Employee;
-import com.example.emp.model.repository.EmployeeRepository;
+import com.dinesh.emp.model.Employee;
+import com.dinesh.emp.model.repository.EmployeeRepository;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @Controller
@@ -32,11 +32,7 @@ public class EmployeeController {
 	EmployeeRepository employeeRepository;
 
 	
-	@GetMapping("/")
-		public String getIndex(Model model) {
-		return "index";
-		}
-	 
+
 	
 	//Need Model Object here to passs data to frontend
 	@GetMapping("/employee") 
