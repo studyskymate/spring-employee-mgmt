@@ -110,7 +110,7 @@ public class EmployeeController {
 
 		//Need Model Object here to passs data to frontend
 	 @RequestMapping(path = "/edit/{id}")
-	public String editEmplyee( @PathVariable("id") Long id,Model model) {
+	public String editEmplyee(@PathVariable("id") Long id,Model model) {
 		//fetch list of employees
         try {
 				

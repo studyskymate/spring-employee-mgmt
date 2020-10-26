@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
@@ -20,14 +21,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-        http
+        http.cors().and().csrf().disable()
         .authorizeRequests()
             .antMatchers(
                     "/registration**",
                     "/js/**",
                     "/css/**",
                     "/img/**",
-                    "/webjars/**").permitAll()
+                    "/webjars/**",
+                    "/employeesave/**").permitAll()
             .anyRequest().authenticated()
         .and()
             .formLogin()
@@ -41,6 +43,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/login?logout")
         .permitAll();
 }
+	
+	  @Override
+	    public void configure(WebSecurity webSecurity) throws Exception {
+		  webSecurity
+		   .ignoring()
+         .antMatchers("/h2-console/**/**");//Should not be in Production!
+	  }
 
 @Bean
 public BCryptPasswordEncoder passwordEncoder() {
