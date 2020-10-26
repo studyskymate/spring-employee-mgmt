@@ -31,9 +31,7 @@ public class EmployeeController {
 	@Autowired
 	EmployeeRepository employeeRepository;
 
-	
 
-	
 	//Need Model Object here to passs data to frontend
 	@GetMapping("/employee") 
 	public String getEmplyee(Model model) {
@@ -52,6 +50,7 @@ public class EmployeeController {
 		System.out.println("IN Employee");
 		//@ModelAttribute("employee") Employee employee
 		
+		  try {
 		long id=   Long.valueOf(request.getParameter("id"));
 		String name=request.getParameter("name");
 		String salary=request.getParameter("salary");
@@ -59,7 +58,7 @@ public class EmployeeController {
 		Employee employee =new Employee();
 		employee.setId(id);
 		employee.setName(name);
-		employee.setSalary( Double.valueOf(salary));
+		employee.setSalary(Double.valueOf(salary));
 		
 		
 		Employee emp=employeeRepository.save(employee);
@@ -74,9 +73,11 @@ public class EmployeeController {
 		model.addAttribute("employees",listEmployees);
 		
 		//Here Return the name of HTML file or view file
+		  } catch(Exception ex) {
+	        	System.out.println("ex"+ex);
+	        	model.addAttribute("error",ex);
+	        }
 		return "employee";
-		
-	
 	}
 	
 	
@@ -105,6 +106,30 @@ public class EmployeeController {
         	model.addAttribute("error",ex);
         }
 		return "employee";
+	}
+
+		//Need Model Object here to passs data to frontend
+	 @RequestMapping(path = "/edit/{id}")
+	public String editEmplyee( @PathVariable("id") Long id,Model model) {
+		//fetch list of employees
+        try {
+				
+		System.out.println("ID to Edit:"+id);
+		Optional<Employee> e= employeeRepository.findById(id);
+		
+		Employee emp=e.get();
+		
+		
+		//Set the Model Object
+		model.addAttribute("employee",emp);
+		
+		//Here Return the name of HTML file or view file
+        }
+        catch(Exception ex) {
+        	System.out.println("ex"+ex);
+        	model.addAttribute("error",ex);
+        }
+		return "edit_employee";
 	}
 
 	
