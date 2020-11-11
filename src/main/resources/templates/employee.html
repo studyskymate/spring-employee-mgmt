@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
@@ -18,14 +19,20 @@
 
 	<div class="container">
 
-       
-       
+   <span sec:authentication="principal.authorities">Roles</span>
+    <div sec:authorize="isAuthenticated()">
+    Welcome <b><span sec:authentication="name">Username</span></b>
+    &nbsp;
+    <i><span sec:authentication="principal.authorities">Roles</span></i>
+</div>
+
        <p th:text="${error}" class="btn btn-alert"></p>
        
+        <div sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
 		<div
 			th:replace="/fragments/create_employee.html :: create_employee_fragment">
 		</div>
-
+       </div>
 
 		<table class="table table-bordered">
 			<thead>
@@ -33,8 +40,10 @@
 					<th>Id</th>
 					<th>Name</th>
 					<th>Salary</th>
+					 <div sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
 					<th>Edit</th>
 					<th>Delete</th>
+					</div>
 				</tr>
 			</thead>
 
@@ -46,16 +55,22 @@
 				
 				<td th:text="${emp.salary}"></td>
 				      <td>
+				      
+		       <div sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
                       <a th:href="@{/edit/{id}(id=${emp.id})}"
                          class="btn btn-primary">
                           Edit
                         </a>
+                        </div>
                       </td>
+                      
 				      <td>
+				      <div sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
                       <a th:href="@{/delete/{id}(id=${emp.id})}"
                          class="btn btn-primary">
                           Delete
                          </a>
+                         </div>
                       </td>
 			</tr>
 		</table>

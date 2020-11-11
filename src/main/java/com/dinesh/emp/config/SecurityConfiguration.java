@@ -23,6 +23,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable()
         .authorizeRequests()
+       
+        .antMatchers("/delete/**").hasAuthority("ROLE_ADMIN")
             .antMatchers(
                     "/registration**",
                     "/js/**",
@@ -48,7 +50,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	    public void configure(WebSecurity webSecurity) throws Exception {
 		  webSecurity
 		   .ignoring()
-         .antMatchers("/h2-console/**/**");//Should not be in Production!
+         .antMatchers("/h2-console/**/**","/employee/fetch");//Should not be in Production!
 	  }
 
 @Bean
