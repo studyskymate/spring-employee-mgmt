@@ -14,7 +14,7 @@
 </head>
 <body>
 
-	<div th:replace="/fragments/menu.html :: menu"></div>
+	<div th:replace="fragments/menu.html :: menu"></div>
 
 
 	<div class="container">
@@ -30,7 +30,7 @@
        
         <div sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
 		<div
-			th:replace="/fragments/create_employee.html :: create_employee_fragment">
+			th:replace="fragments/create_employee.html :: create_employee_fragment">
 		</div>
        </div>
 
@@ -56,7 +56,7 @@
 				<td th:text="${emp.salary}"></td>
 				      <td>
 				      
-		       <div sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+		           <div sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
                       <a th:href="@{/edit/{id}(id=${emp.id})}"
                          class="btn btn-primary">
                           Edit

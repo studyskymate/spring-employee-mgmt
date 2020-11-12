@@ -12,7 +12,7 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-<div th:replace="/fragments/menu.html :: menu"></div>
+<div th:replace="fragments/menu.html :: menu"></div>
 
 		<form action="/employeesave" th:object="${employee}" method="post">
 			<h2 class="text-center">Edit Employee</h2>

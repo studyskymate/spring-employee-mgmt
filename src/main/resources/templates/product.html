@@ -45,7 +45,7 @@
 
 <body>
 
-<div th:replace="/fragments/menu.html :: menu"> </div>
+<div th:replace="fragments/menu.html :: menu"> </div>
 
 
 
@@ -54,7 +54,7 @@
 
 
 
-<div th:replace="/fragments/homeslider :: slider"> </div>
+<div th:replace="fragments/homeslider :: slider"> </div>
 
 
 <div class="container-fluid">
@@ -69,7 +69,7 @@
 </div>
 
 
-<div th:replace="/fragments/homeslider :: slider"> </div>
+<div th:replace="fragments/homeslider :: slider"> </div>
 
 
 
@@ -111,7 +111,7 @@
   </div>
 </div>
 
-<div th:replace="/fragments/homeslider :: slider"> </div>
+<div th:replace="fragments/homeslider :: slider"> </div>
 
  <p th:text="'Hello,Welcome  ' + ${name} + '!'" />
  <li th:each="product: ${products}" >
@@ -124,7 +124,7 @@
 
 
 
-<div th:replace="/fragments/footer.html :: footer"> </div>
+<div th:replace="fragments/footer.html :: footer"> </div>
 
 </body>
 
